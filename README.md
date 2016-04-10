@@ -1,9 +1,8 @@
-
-CLE installation
+<h1>CLE installation
 
 This document describes how CLE can be installed in Moodle
 
-Moodle CLE Plugin Installation
+<h2>Moodle CLE Plugin Installation
 
 Download CLE.zip from GitHub at https://github.com/ebtic-uae
 Log into Moodle as Admin user, go to ADMINISTRATION->Site administration->Plugins->Install plugins
@@ -16,8 +15,9 @@ Set up CLE settings:
     Host
     MySQL user for etherpad, Password, Database
 
-Etherpad Installation
-  For CLE to work, etherpad needs to be installed. 
+<h2>Etherpad Installation
+
+For CLE to work, etherpad needs to be installed. 
   Go to http://www.etherpad.org and download etherpad. As etherpad is written in javascript, you will have to have Node       (https://nodejs.org ) installed.
   If you want to use the statistics feature of CLE, etherpad needs to be setup to use MySQL (please refer to the installation documents of ehterpad)
   Once etherpad is installed, take note of
@@ -30,7 +30,7 @@ Etherpad Installation
     webrtc (if you want to have audio/video support).
     headings (so that students can structure their work better).
 
-Fun with Pad.php
+<h2>Fun with Pad.php
 
   CLE in essence is integrating the user management of Moodle and etherpad. The way this integration works with respect to authenticating Moodle users in etherpad is through cookies. Moodle writes the authentication cookie, and etherpad reads it to know that the user is allowed to see the pad. However, cookies can only be read from the same domain. So, if your etherpad server resides on a different domain (or if you use IP numbers to identify your machines), the authentication breaks.
   
@@ -41,7 +41,7 @@ go to the settings page of CLE and change the location of the etherpad server
 
   Now, moodle will - instead of writing the cookie and then calling the outside etherpad server - call a php file which in turn does nothing but set the cookie and then call etherpad.
 
-FAQ
+<h2>FAQ
 Q - How about security?
 A - Be aware that in case of you using SSL, some browsers take issue if an iframe from a SSL-enabled website points to a non-encrypted site. In other words, if your moodle installation is accessible through SSL, then etherpad should also be SSL enabled. 
 
