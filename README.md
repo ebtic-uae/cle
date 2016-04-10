@@ -1,15 +1,17 @@
 
 CLE installation
-  This document describes how CLE can be installed in Moodle
+
+This document describes how CLE can be installed in Moodle
 
 Moodle CLE Plugin Installation
-  Download CLE.zip from GitHub at https://github.com/ebtic-uae
-  Log into Moodle as Admin user, go to ADMINISTRATION->Site administration->Plugins->Install plugins
-  Choose "Assignment/Submission plugin(assignsubmission)" as "Plugin type"
-  Upload "CLE.zip"
-  Tick "Acknowledgement"
-  After CLE plugin was installed, upgrade Moodle database
-  Set up CLE settings:
+
+Download CLE.zip from GitHub at https://github.com/ebtic-uae
+Log into Moodle as Admin user, go to ADMINISTRATION->Site administration->Plugins->Install plugins
+Choose "Assignment/Submission plugin(assignsubmission)" as "Plugin type"
+Upload "CLE.zip"
+Tick "Acknowledgement"
+After CLE plugin was installed, upgrade Moodle database
+Set up CLE settings:
     Etherpad server location, Etherpad API key
     Host
     MySQL user for etherpad, Password, Database
