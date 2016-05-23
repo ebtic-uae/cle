@@ -108,29 +108,18 @@ class MoodleQuickForm_cleeditor extends HTML_QuickForm_input {
         $cmid = $this->_attributes['cm'];
         $url = $this->_attributes['url'];
 		
-		$host = get_config('assignsubmission_cle', 'etherpad_server');
+	$host = get_config('assignsubmission_cle', 'etherpad_server');
+	$etherpad_url_port = get_config('assignsubmission_cle', 'etherpad_url');
 		
-		if(strtoupper($host) == '127.0.0.1' or strtoupper($host) == 'LOCALHOST'){			
+	$session = $this->_attributes['session'];
+	$cm = get_coursemodule_from_id('', $cmid);
+	$group_string='';
 			
-			$srcStr=$url.'/p/'.$pad_code.'?showControls=true&showChat=true&showLineNumbers=false&useMonospaceFont=false&userName='.$firstname;
-			
-			$group_string='';
-			
-			$html = $group_string.'<iframe src="'.$srcStr.'" width="100%" height="400">Your browser does not display iFrames</iframe>';
-			
-			return $html;
-		}		
-		else{			
-			$session = $this->_attributes['session'];
-			$cm = get_coursemodule_from_id('', $cmid);
-			$group_string='';
-			
-			$redirectStr='http://'.$host.'/pad.php?userName='.htmlentities($firstname).'&padCode='.$pad_code.'&session='.$session.'&url='.htmlentities($url);
+	$redirectStr=$etherpad_url_port.'/auth_session?padName='.$pad_code.'&sessionID='.$session.'&userName='.htmlentities($firstname).'&showControls=true&showChat=true&showLineNumbers=false&useMonospaceFont=false';
 
-			$html = $group_string.'<iframe src="'.$redirectStr.'" width="100%" height="400">Your browser does not display iFrames</iframe>';
+	$html = $group_string.'<iframe src="'.$redirectStr.'" width="100%" height="400">Your browser does not display iFrames</iframe>';
 
-			return $html;
-		}
+	return $html;
     }
 
     /**

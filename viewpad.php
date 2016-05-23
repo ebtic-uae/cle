@@ -60,11 +60,14 @@ $validUntil = mktime(0, 0, 0, date("m"), date("d") + 1, date("y")); // One day i
 $ether_session = $etherpad->createSession($ether_group, $ether_author->authorID, $validUntil);
 $cookie = setcookie('sessionID', $ether_session, $validUntil);
 
+
+
 $PAGE->set_url('/mod/assign/submission/cle/viewpad.php', array('id' => $cmid, 'pad' => $pad));
 $PAGE->set_title('Collaborative Learning Environment');
 $PAGE->set_heading('Group Pad');
 $PAGE->set_pagelayout('popup');
 $PAGE->set_cacheable(false);
+
 
 //output page
 echo $OUTPUT->header();
@@ -82,18 +85,9 @@ $host = get_config('assignsubmission_cle', 'etherpad_server');
 
 $etherpad_url_port = get_config('assignsubmission_cle', 'etherpad_url');
 
-if(strtoupper($host) == '127.0.0.1' or strtoupper($host) == 'LOCALHOST'){	
-	
-	list($http, $domain, $port) = explode(":", $etherpad_url_port);		 	
-	
-  $srcStr=$CFG->wwwroot.'/mod/assign/submission/cle/pad.php?userName='.htmlentities($USER->firstname).'&padCode='.$pad.'&session='.$ether_session->sessionID.'&url='.$etherpad_url_port.'&showChat=false&av=NO';
-}
+$srcStr=$etherpad_url_port.'/auth_session?padName='.$pad.'&sessionID='.$ether_session->sessionID.'&userName='.htmlentities($USER->firstname).'&showChat=false&av=NO';
 
-else{  
-  $srcStr='http://'.$host.'/pad.php?userName='.htmlentities($USER->firstname).'&padCode='.$pad.'&session='.$ether_session->sessionID.'&url='.$etherpad_url_port.'&showChat=false&av=NO';
-} 
-  
-  echo '<iframe src="'.$srcStr.'" width="100%" height="400">Your browser does not diplay iFrames</iframe>';
+echo '<iframe src="'.$srcStr.'" width="100%" height="400">Your browser does not diplay iFrames</iframe>';
   
 echo $OUTPUT->box_end();
 echo $OUTPUT->close_window_button();
