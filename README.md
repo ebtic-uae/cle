@@ -30,16 +30,11 @@ This document describes how CLE can be installed in Moodle
     * webrtc (if you want to have audio/video support).
     * headings (so that students can structure their work better).
 
-##Fun with Pad.php
+##auth_session Installation
 
-* CLE in essence is integrating the user management of Moodle and etherpad. The way this integration works with respect to authenticating Moodle users in etherpad is through cookies. Moodle writes the authentication cookie, and etherpad reads it to know that the user is allowed to see the pad. However, cookies can only be read from the same domain. So, if your etherpad server resides on a different domain (or if you use IP numbers to identify your machines), the authentication breaks.
-  
-* To allow etherpad to live outside the moodle domain, you can employ a trick 
-    * setup a webserver on the server that runs the etherpad service
-    * find pad.php (it is in the cle.zip) and copy it to the root of said webserver
-    * go to the settings page of CLE and change the location of the etherpad server
-
-* Now, moodle will - instead of writing the cookie and then calling the outside etherpad server - call a php file which in turn does nothing but set the cookie and then call etherpad.
+*To handle etherpad and moodle in the different server, auth_session needs to be installed.
+   *Go to your etherpad admin portal, for example http://cle.ebtic.org:9001/admin/
+   *In the Plugin manager, find auth_session plugin in the available plugins, then install it
 
 ##FAQ
 * Q - How about security?
